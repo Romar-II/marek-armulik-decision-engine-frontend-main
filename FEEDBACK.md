@@ -22,3 +22,29 @@ which works for me, I would try to separate initial display variables from varia
 if loans could be issued for any amount of months then slider can be changed, in slider.adaptive for loan period  
 to display any amount of months between 12 and 60 months with:
 _loanPeriod = ((newValue.floor()).round());
+
+-Backend feedback
+Would suggest to rewrite loan amount check and loan period check, in verifyInputs method, to avoid negations
+and put them in a separate method with proper names to improve code readability.
+For example:
+
+    if (loanAmount>DecisionEngineConstants.MAXIMUM_LOAN_AMOUNT
+    || loanAmount<DecisionEngineConstants.MINIMUM_LOAN_AMOUNT) {
+    throw new InvalidLoanAmountException("Invalid loan amount!");
+    }
+
+    if (loanPeriod > DecisionEngineConstants.MAXIMUM_LOAN_PERIOD
+    || loanPeriod < DecisionEngineConstants.MINIMUM_LOAN_PERIOD) {
+    throw new InvalidLoanPeriodException("Invalid loan period!");
+    }
+
+Positive feedback:
+
+-Method structure is very good, each method is responsible for something specific
+
+-Exception handling is very good 
+
+-EstonianPersonalCodeValidator is pretty neat implementation, very robust, had to comment it out to test the program
+
+-Good use of constants, later if they would have to be changed, it will be possible from a constant page without stepping a foot into code.
+
