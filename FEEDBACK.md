@@ -48,3 +48,14 @@ Positive feedback:
 
 -Good use of constants, later if they would have to be changed, it will be possible from a constant page without stepping a foot into code.
 
+TASK 102
+
+Added age verification and country selection dropdown.
+
+Country selection dropdown chooses which country is the loan requested and sends this information to the back-end.
+Country info is added to request JSON and into relevant api_service tests.
+
+Age is verified in 2 steps.
+Checking if loan applicant is underage/younger than the age of majority
+Checking if loan applicant is or older than the current expected
+lifetime of each respectable country minus requested loan period.
